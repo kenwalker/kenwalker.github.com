@@ -1,0 +1,21 @@
+<!doctype html>
+<html>
+<head>
+	<title>Cloud OE - Orion</title>
+	<script src="js/require/require.js"></script>
+	<script>
+		/*global require*/
+		require.config({
+			baseUrl: "js",
+			paths: {
+				domReady: "require/domReady"
+			}
+		});
+		require(["orion-connector-script"]);
+	</script>
+</head>
+<body>
+<div id="output"></div>
+
+</body>
+</html>
