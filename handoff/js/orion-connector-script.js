@@ -5,7 +5,7 @@
  ******************************************************************************/
 /*global define require console URL window*/
 /*jslint browser:true*/ 
-var ORION_HOME = 'http://localhost:8080';
+var ORION_HOME = 'https://orion.eclipse.org';
 
 define([ORION_HOME + '/import/trampoline.js', 'orion/xhr', 'orion/Deferred', 'orion/URITemplate', 'orion/URL-shim', 'domReady!'],
 		function(orionConnector, xhr, Deferred, URITemplate, _, document) {
