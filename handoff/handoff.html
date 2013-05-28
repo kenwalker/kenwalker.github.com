@@ -5,13 +5,6 @@
 	<script src="js/require/require.js"></script>
 	<script>
 		/*global require alert*/
-		require.config({
-			baseUrl: "js",
-			paths: {
-				domReady: "require/domReady"
-			}
-		});
-		require(["orion-connector-script"]);
 		function isSupportedBrowser() {
 			var userAgent = navigator.userAgent;
 			var isSupported = false;
@@ -34,10 +27,17 @@
 			alert("Sorry, your browser is not supported at the moment.\n\nTo use the Import function for Orion, we recommend that you use the latest web browsers from Google Chrome or FireFox.\n");
 			throw 'unsupported browser';
 		}
+		require.config({
+			baseUrl: "js",
+			paths: {
+				domReady: "require/domReady"
+			}
+		});
+		require(["orion-connector-script"]);
 	</script>
 </head>
 <body>
 <div id="output"></div>
-This page is importing an application into Orion.
+This page is importing an application into Orion....
 </body>
 </html>
