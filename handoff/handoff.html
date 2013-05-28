@@ -4,7 +4,7 @@
 	<title>Import into Orion</title>
 	<script src="js/require/require.js"></script>
 	<script>
-		/*global require*/
+		/*global require alert*/
 		require.config({
 			baseUrl: "js",
 			paths: {
@@ -12,6 +12,28 @@
 			}
 		});
 		require(["orion-connector-script"]);
+		function isSupportedBrowser() {
+			var userAgent = navigator.userAgent;
+			var isSupported = false;
+			var VERSION = 1;
+			var browserData = [	{name:'Chrome', regExp: /chrome\/(\d+)/i, minVersion: 24},
+								{name:'Firefox', regExp: /firefox\/(\d+)/i, minVersion: 5},
+								{name:'MSIE', regExp: /msie\s(\d+)/i, minVersion: 10}];
+		
+			for (var i = 0; i < browserData.length; i++) {
+			    var browser = browserData[i];
+			    var matches = userAgent.match(browser.regExp);
+			    if (matches && matches[VERSION] >= browser.minVersion) {
+			        isSupported = true;
+			        break;
+			    }
+			}
+			return isSupported;
+		}
+		if (!isSupportedBrowser()) {
+			alert("Sorry, your browser is not supported at the moment.\n\nTo use the Import function for Orion, we recommend that you use the latest web browsers from Google Chrome or FireFox.\n");
+			throw 'unsupported browser';
+		}
 	</script>
 </head>
 <body>
