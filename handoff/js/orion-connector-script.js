@@ -1,7 +1,12 @@
 /*******************************************************************************
  * @license
  * Copyright (c) 2013 IBM Corporation and others.
- * All rights reserved.
+ * All rights reserved. This program and the accompanying materials are made 
+ * available under the terms of the Eclipse Public License v1.0 
+ * (http://www.eclipse.org/legal/epl-v10.html), and the Eclipse Distribution 
+ * License v1.0 (http://www.eclipse.org/org/documents/edl-v10.html). 
+ * 
+ * Contributors: IBM Corporation - initial API and implementation
  ******************************************************************************/
 /*global define require console URL window*/
 /*jslint browser:true*/ 
@@ -27,7 +32,7 @@ define([ORION_HOME + '/import/trampoline.js', 'orion/xhr', 'orion/Deferred', 'or
 		debug(msg);
 		var output = document.getElementById("output");
 		if (output) {
-			output.textContent = 'Sorry, an error occurred: ' + msg;
+			output.textContent = msg;
 		}
 	}
 
@@ -67,7 +72,8 @@ define([ORION_HOME + '/import/trampoline.js', 'orion/xhr', 'orion/Deferred', 'or
 		});
 	}
 
-	function importComplete(event) { //$NON-NLS-0$
+	function importComplete(event) {
+		logError("Redirecting to Orion");
 		var redirectToOrion = function(data) {
 			var project = data.project, templates = data.templates;
 			var appjs, href;
@@ -95,6 +101,7 @@ define([ORION_HOME + '/import/trampoline.js', 'orion/xhr', 'orion/Deferred', 'or
 	}
 
 	// Init
+	logError("Beginning import");
 	var pageParams = readPageParams(window.location.href);
 	var orionImporterReady = new Deferred();
 	orionConnector.addEventListener('ready', function(event) { //$NON-NLS-0$
